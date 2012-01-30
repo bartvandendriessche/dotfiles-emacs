@@ -8,12 +8,21 @@
 
 (defvar my-packages '(
                       auto-complete
+                      coffee-mode
+                      csv-mode
+                      ctags
+                      ctags-update
                       marmalade
                       starter-kit
                       starter-kit-bindings
                       starter-kit-eshell
                       starter-kit-js
                       starter-kit-ruby
+                      flymake
+                      flymake-coffee
+                      flymake-cursor
+                      flymake-ruby
+                      flymake-sass
                       yasnippet-bundle
                       yaml-mode
                       ))
@@ -21,7 +30,17 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+;; automatically update TAGS on save
+(ctags-update-minor-mode 1)
+
+;; load default auto-complete settings
+(require 'auto-complete-config)
+(ac-config-default)
+
+;; associate fish files with shell mode
 (add-to-list 'auto-mode-alist '("\\.fish$" . shell-script-mode))
+
+;; associate ejs files with html mode
 (add-to-list 'auto-mode-alist '("\\.ejs$" . html-mode))
 
 (defun coffee-custom ()
@@ -31,9 +50,21 @@
   )
 
 (add-hook 'coffee-mode-hook 'coffee-custom)
+
+;; use flymake for coffeescript
+(add-hook 'coffee-mode-hook 'flymake-coffee-load)
+
+;; use flymake for ruby
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
+;; don't use pretty lambdas cause we can't render them properly
 (remove-hook 'prog-mode-hook 'esk-pretty-lambdas)
 
+;; default color scheme
 (load-theme 'tango-dark)
+
+;; auto-reload files that have been changed outside emacs
+(global-auto-revert-mode t)
 
 ;; make S-up work in iTerm2 (likely a bug with xterm-256 mode
 (define-key global-map [select] 'windmove-up)
@@ -55,4 +86,5 @@
  ;; If there is more than one, they won't work right.
  )
 
-(global-auto-revert-mode t)
+;; utf-8 all the things !
+;;(set-terminal-coding-system 'utf-8)
