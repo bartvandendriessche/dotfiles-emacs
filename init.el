@@ -38,18 +38,19 @@
   (setq my-packages (mapcar 'el-get-source-name el-get-sources))
   (el-get 'sync my-packages))
 
+;; function that syncs packages, but first installs el-get if it is
+;; not present
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (if (require 'el-get nil t)
     (sync-packages)
   (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-                (lambda (s) (let el-get-master-branch)
+                (lambda (s)
                   (end-of-buffer)
                   (eval-print-last-sexp)
                   (setq el-get-verbose t)
                   (sync-packages))))
 
-;; load default auto-complete settings
-(require 'auto-complete-config)
-(ac-config-default)
+;; use ac-source-yasnippet in ruby-mode
 (defun ac-ruby-mode-setup ()
   (setq ac-sources (append '(ac-source-yasnippet))))
 
