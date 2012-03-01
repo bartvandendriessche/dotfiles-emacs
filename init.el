@@ -1,38 +1,51 @@
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/")
-             '("tromey" . "http://tromey.com/elpa/"))
-(package-initialize)
+;; install el-get unless it is already installed
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(when (not package-archive-contents) (package-refresh-contents))
+;; Fetch packages through el-get
+(setq el-get-sources
+      '(
+        (:name auto-complete)
+        (:name auto-complete-css)
+        (:name auto-complete-emacs-lisp)
+        (:name auto-complete-etags)
+        (:name auto-complete-ruby)
+        (:name auto-complete-yasnippet)        
+        (:name coffee-mode)
+        (:name csv-mode)
+        ;;(:name ctags :type elpa)
+        ;;(:name ctags-update :type elpa)
+        (:name starter-kit :type elpa)
+        (:name starter-kit-bindings :type elpa)
+        (:name starter-kit-eshell :type elpa)
+        (:name starter-kit-js :type elpa)
+        (:name starter-kit-ruby :type elpa)
+        (:name flymake :type elpa)
+        (:name flymake-coffee :type elpa)
+        (:name flymake-cursor :type elpa)
+        (:name flymake-ruby :type elpa)
+        (:name flymake-sass :type elpa)
+        (:name yasnippet-bundle :type elpa)
+        (:name yas-jit :type elpa)
+        (:name yaml-mode)
+        ))
 
-(defvar my-packages '(
-                      auto-complete
-                      coffee-mode
-                      csv-mode
-                      ctags
-                      ctags-update
-                      marmalade
-                      starter-kit
-                      starter-kit-bindings
-                      starter-kit-eshell
-                      starter-kit-js
-                      starter-kit-ruby
-                      flymake
-                      flymake-coffee
-                      flymake-cursor
-                      flymake-ruby
-                      flymake-sass
-                      yasnippet-bundle
-                      yas-jit
-                      yaml-mode
-                      ))
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+(defun sync-packages ()
+  "Synchronize packages using el-get"
+  (interactive)
+  (el-get 'sync '(el-get package))
+  (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
+  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+  (setq my-packages (mapcar 'el-get-source-name el-get-sources))
+  (el-get 'sync my-packages))
 
-;; automatically update TAGS on save
-(ctags-update-minor-mode 1)
+(if (require 'el-get nil t)
+    (sync-packages)
+  (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+                (lambda (s) (let el-get-master-branch)
+                  (end-of-buffer)
+                  (eval-print-last-sexp)
+                  (setq el-get-verbose t)
+                  (sync-packages))))
 
 ;; load default auto-complete settings
 (require 'auto-complete-config)
@@ -59,9 +72,6 @@
 
 ;; use flymake for ruby
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
-
-;; don't use pretty lambdas cause we can't render them properly
-(remove-hook 'prog-mode-hook 'esk-pretty-lambdas)
 
 ;; default color scheme
 (load-theme 'tango-dark)
