@@ -24,6 +24,7 @@
                       flymake-ruby
                       flymake-sass
                       yasnippet-bundle
+                      yas-jit
                       yaml-mode
                       ))
 (dolist (p my-packages)
@@ -36,6 +37,8 @@
 ;; load default auto-complete settings
 (require 'auto-complete-config)
 (ac-config-default)
+(defun ac-ruby-mode-setup ()
+  (setq ac-sources (append '(ac-source-yasnippet))))
 
 ;; associate fish files with shell mode
 (add-to-list 'auto-mode-alist '("\\.fish$" . shell-script-mode))
