@@ -71,7 +71,9 @@
 (add-to-list 'auto-mode-alist '("\\.ejs$" . html-mode))
 
 ;; default color scheme
-(load-theme 'tango-dark)
+;; (load-theme 'tango-dark)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized/")
+(load-theme 'solarized-dark t)
 
 ;; auto-reload files that have been changed outside emacs
 (global-auto-revert-mode t)
@@ -85,6 +87,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
+
  '(custom-safe-themes (quote ("7fe1e3de3e04afc43f9a3d3a8d38cd0a0efd9d4c" "d14db41612953d22506af16ef7a23c4d112150e5" default)))
  '(reb-re-syntax (quote string))
  '(safe-local-variable-values (quote ((encoding . utf-8) (whitespace-line-column . 80) (lexical-binding . t))))
