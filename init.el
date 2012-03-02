@@ -14,6 +14,7 @@
         (:name csv-mode)
         (:name ctags :type elpa)
         (:name ctags-update :type elpa)
+        (:name haml-mode)
         (:name starter-kit :type elpa)
         (:name starter-kit-bindings :type elpa)
         (:name starter-kit-eshell :type elpa)
