@@ -29,6 +29,8 @@
         (:name flymake-ruby :type elpa :after (lambda ()
                                                 (add-hook 'ruby-mode-hook 'flymake-ruby-load)))
         (:name flymake-sass :type elpa)
+        (:name magit)
+        (:name magithub)
         (:name sass-mode)
         (:name scss-mode :after (lambda ()
                                   (custom-set-variables '(scss-compile-at-save nil))))
