@@ -21,6 +21,7 @@
         (:name starter-kit-js :type elpa)
         (:name starter-kit-ruby :type elpa)
         (:name starter-kit-lisp :type elpa)
+        (:name feature-mode :type elpa)
         (:name flymake :type elpa)
         (:name flymake-coffee :type elpa :after (lambda ()
                                                   (add-hook 'coffee-mode-hook 'flymake-coffee-load)))
