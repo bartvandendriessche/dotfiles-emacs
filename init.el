@@ -1,11 +1,19 @@
 ;; List of packages to install using el-get
+(add-to-list 'load-path "~/.emacs.d/el-get-to-submit")
+(require 'rcodetools)
+
 (setq el-get-sources
       '(
         (:name auto-complete :after (lambda () (ac-config-default)))
         (:name auto-complete-css)
         (:name auto-complete-emacs-lisp)
         (:name auto-complete-etags)
-        (:name auto-complete-ruby)
+        (:name auto-complete-ruby :after (lambda ()
+                                           ;; make sure rcodetools is
+                                           ;; installed and available
+                                           ;; through (getenv "GEM_PATH")
+                                           (require 'auto-complete-ruby)
+                                           (ac-ruby-init)))
         (:name auto-complete-yasnippet)
         (:name coffee-mode :after (lambda ()
                                     (define-key coffee-mode-map [remap newline-and-indent] 'coffee-newline-and-indent) ;; rebind newline-and-indent key to coffee-mode version
@@ -63,9 +71,10 @@
                   (setq el-get-verbose t)
                   (sync-packages))))
 
+
 ;; use ac-source-yasnippet in ruby-mode
 (defun ac-ruby-mode-setup ()
-  (setq ac-sources (append '(ac-source-yasnippet))))
+  (setq ac-sources (append ac-sources '(ac-source-yasnippet))))
 
 ;; associate fish files with shell mode
 (add-to-list 'auto-mode-alist '("\\.fish$" . shell-script-mode))
