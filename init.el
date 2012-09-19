@@ -45,6 +45,8 @@
         (:name sass-mode)
         (:name scss-mode :after (lambda ()
                                   (custom-set-variables '(scss-compile-at-save nil))))
+        (:name less-css-mode :type elpa)
+        (:name rainbow-mode :type elpa)
         (:name yasnippet-bundle :type elpa)
         (:name yas-jit :type elpa)
         (:name yaml-mode)
