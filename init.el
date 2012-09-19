@@ -27,7 +27,9 @@
         (:name starter-kit-bindings :type elpa)
         (:name starter-kit-eshell :type elpa)
         (:name starter-kit-js :type elpa)
-        (:name starter-kit-ruby :type elpa)
+        (:name starter-kit-ruby :type elpa :after (lambda ()
+                                                    ;; support Podfiles
+                                                    (add-to-list 'auto-mode-alist '("Podfile$" . ruby-mode))))
         (:name starter-kit-lisp :type elpa)
         (:name feature-mode :type elpa)
         (:name flymake :type elpa)
