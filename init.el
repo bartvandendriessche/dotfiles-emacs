@@ -29,6 +29,7 @@
         (:name starter-kit-js :type elpa)
         (:name starter-kit-ruby :type elpa :after (lambda ()
                                                     ;; support Podfiles
+                                                    (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
                                                     (add-to-list 'auto-mode-alist '("Podfile$" . ruby-mode))
                                                     (add-to-list 'auto-mode-alist '("\\.podspec$" . ruby-mode))))
         (:name rvm)
