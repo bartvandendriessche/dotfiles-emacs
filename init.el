@@ -8,12 +8,12 @@
         (:name auto-complete-css)
         (:name auto-complete-emacs-lisp)
         (:name auto-complete-etags)
-        (:name auto-complete-ruby :after (lambda ()
-                                           ;; make sure rcodetools is
-                                           ;; installed and available
-                                           ;; through (getenv "GEM_PATH")
-                                           (require 'auto-complete-ruby)
-                                           (ac-ruby-init)))
+        ;; (:name auto-complete-ruby :after (lambda ()
+        ;;                                    ;; make sure rcodetools is
+        ;;                                    ;; installed and available
+        ;;                                    ;; through (getenv "GEM_PATH")
+        ;;                                    (require 'auto-complete-ruby)
+        ;;                                    (ac-ruby-init)))
         (:name auto-complete-yasnippet)
         (:name coffee-mode :after (lambda ()
                                     (define-key coffee-mode-map [remap newline-and-indent] 'coffee-newline-and-indent) ;; rebind newline-and-indent key to coffee-mode version
