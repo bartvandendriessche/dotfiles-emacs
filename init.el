@@ -4,55 +4,52 @@
 
 (setq el-get-sources
       '(
-        (:name auto-complete :after (lambda () (ac-config-default)))
+        (:name auto-complete)
         (:name auto-complete-css)
         (:name auto-complete-emacs-lisp)
         (:name auto-complete-etags)
-        ;; (:name auto-complete-ruby :after (lambda ()
+        ;; (:name auto-complete-ruby :after (progn
         ;;                                    ;; make sure rcodetools is
         ;;                                    ;; installed and available
         ;;                                    ;; through (getenv "GEM_PATH")
         ;;                                    (require 'auto-complete-ruby)
         ;;                                    (ac-ruby-init)))
         (:name auto-complete-yasnippet)
-        (:name coffee-mode :after (lambda ()
+        (:name coffee-mode :after (progn
                                     (define-key coffee-mode-map [remap newline-and-indent] 'coffee-newline-and-indent) ;; rebind newline-and-indent key to coffee-mode version
                                     (define-key coffee-mode-map "\C-xr" 'coffee-compile-buffer)
                                     (custom-set-variables  '(coffee-tab-width 2))))
-        (:name csv-mode)
-        (:name ctags :type elpa)
-        (:name ctags-update :type elpa)
         (:name haml-mode)
-        (:name starter-kit :type elpa)
-        (:name starter-kit-bindings :type elpa)
-        (:name starter-kit-eshell :type elpa)
-        (:name starter-kit-js :type elpa)
-        (:name starter-kit-ruby :type elpa :after (lambda ()
-                                                    ;; support Podfiles
-                                                    (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
-                                                    (add-to-list 'auto-mode-alist '("Podfile$" . ruby-mode))
-                                                    (add-to-list 'auto-mode-alist '("\\.podspec$" . ruby-mode))))
+        (:name starter-kit :type :elpa)
+        (:name starter-kit-bindings :type :elpa)
+        (:name starter-kit-eshell :type :elpa)
+        (:name starter-kit-js :type :elpa)
+        (:name starter-kit-ruby :type :elpa :after (progn
+						     ;; support Podfiles
+						     (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
+						     (add-to-list 'auto-mode-alist '("Podfile$" . ruby-mode))
+						     (add-to-list 'auto-mode-alist '("\\.podspec$" . ruby-mode))))
         (:name rvm)
-        (:name starter-kit-lisp :type elpa)
-        (:name feature-mode :type elpa)
-        (:name flymake :type elpa)
-        (:name flymake-coffee :type elpa :after (lambda ()
-                                                  (add-hook 'coffee-mode-hook 'flymake-coffee-load)))
-        (:name flymake-cursor :type elpa)
+        (:name starter-kit-lisp :type :elpa)
+        (:name feature-mode)
+        (:name flymake :type :elpa)
+        (:name flymake-coffee :type :elpa :after (progn
+						   (add-hook 'coffee-mode-hook 'flymake-coffee-load)))
+        (:name flymake-cursor :type :elpa)
         (:name flymake-point)
-        (:name flymake-ruby :type elpa :after (lambda ()
-                                                (add-hook 'ruby-mode-hook 'flymake-ruby-load)))
-        (:name flymake-sass :type elpa)
+        (:name flymake-ruby :type :elpa :after (progn
+						 (add-hook 'ruby-mode-hook 'flymake-ruby-load)))
+        (:name flymake-sass :type :elpa)
         (:name magit)
         (:name magithub)
         (:name sass-mode)
-        (:name scss-mode :after (lambda ()
+        (:name scss-mode :after (progn
                                   (custom-set-variables '(scss-compile-at-save nil))))
-        (:name less-css-mode :type elpa)
-        (:name rainbow-mode :type elpa)
+        (:name less-css-mode :type :elpa)
+        (:name rainbow-mode)
         (:name markdown-mode)
-        (:name yasnippet-bundle :type elpa)
-        (:name yas-jit :type elpa)
+        (:name yasnippet-bundle :type :elpa)
+        (:name yas-jit)
         (:name yaml-mode)
         ))
 
@@ -65,6 +62,7 @@
   (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
   (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
   (setq my-packages (mapcar 'el-get-source-name el-get-sources))
+  (package-initialize)
   (el-get 'sync my-packages))
 
 ;; function that syncs packages, but first installs el-get if it is
