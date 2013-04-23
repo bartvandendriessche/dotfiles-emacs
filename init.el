@@ -24,7 +24,8 @@
         (:name starter-kit-ruby :type :elpa :after (progn
 						     (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode)) ;; support Guardfiles
 						     (add-to-list 'auto-mode-alist '("Podfile$" . ruby-mode)) ;; support Podfiles
-						     (add-to-list 'auto-mode-alist '("\\.podspec$" . ruby-mode)))) ;; support Podspecs
+						     (add-to-list 'auto-mode-alist '("\\.podspec$" . ruby-mode))
+                                                     (defalias 'inf-ruby-keys 'inf-ruby-setup-keybindings))) ;; support Podspecs
         (:name starter-kit-lisp :type :elpa)
         (:name feature-mode)
         (:name rvm :after (progn
