@@ -1,0 +1,5 @@
+# My Emacs dotfiles
+
+Simply clone this repo to ~/.emacs.d and start emacs. This config uses
+el-get and bootstraps itself by first downloading and installing
+el-get, and then downloading and installing any required packages.
