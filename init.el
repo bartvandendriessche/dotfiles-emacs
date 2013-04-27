@@ -22,10 +22,10 @@
         (:name starter-kit-eshell :type :elpa)
         (:name starter-kit-js :type :elpa)
         (:name starter-kit-ruby :type :elpa :after (progn
-						     (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode)) ;; support Guardfiles
-						     (add-to-list 'auto-mode-alist '("Podfile$" . ruby-mode)) ;; support Podfiles
-						     (add-to-list 'auto-mode-alist '("\\.podspec$" . ruby-mode))
-                                                     (defalias 'inf-ruby-keys 'inf-ruby-setup-keybindings))) ;; support Podspecs
+                                                     (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode)) ;; support Guardfiles
+                                                     (add-to-list 'auto-mode-alist '("Podfile$" . ruby-mode)) ;; support Podfiles
+                                                     (add-to-list 'auto-mode-alist '("\\.podspec$" . ruby-mode)) ;; support Podspecs
+                                                     (defalias 'inf-ruby-keys 'inf-ruby-setup-keybindings)))
         (:name starter-kit-lisp :type :elpa)
         (:name feature-mode)
         (:name rvm :after (progn
