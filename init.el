@@ -6,12 +6,6 @@
         (:name auto-complete-css)
         (:name auto-complete-emacs-lisp)
         (:name auto-complete-etags)
-        ;; (:name auto-complete-ruby :after (progn
-        ;;                                    ;; make sure rcodetools is
-        ;;                                    ;; installed and available
-        ;;                                    ;; through (getenv "GEM_PATH")
-        ;;                                    (require 'auto-complete-ruby)
-        ;;                                    (ac-ruby-init)))
         (:name auto-complete-yasnippet)
         (:name coffee-mode :after (progn
                                     (define-key coffee-mode-map "\C-xr" 'coffee-compile-buffer)
