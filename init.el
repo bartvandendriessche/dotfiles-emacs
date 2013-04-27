@@ -47,6 +47,7 @@
 (defun sync-packages ()
   "Synchronize packages using el-get"
   (interactive)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages") t)
   (el-get 'sync '(el-get package))
   (setq my-packages (mapcar 'el-get-source-name el-get-sources))
   (package-initialize)
