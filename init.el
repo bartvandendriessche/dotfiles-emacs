@@ -33,6 +33,8 @@
         (:name flymake :type :elpa)
         (:name flymake-coffee :type :elpa :after (add-hook 'coffee-mode-hook 'flymake-coffee-load))
         (:name flymake-cursor :type :elpa)
+        (:name flymake-css :after (add-hook 'css-mode-hook 'flymake-css-load))
+        (:name flymake-haml :after (add-hook 'haml-mode-hook 'flymake-haml-load))
         (:name flymake-point)
         (:name flymake-ruby :type :elpa :after (add-hook 'ruby-mode-hook 'flymake-ruby-load))
         (:name flymake-sass :type :elpa)
