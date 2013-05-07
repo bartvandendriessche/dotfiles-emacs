@@ -10,7 +10,8 @@
         (:name coffee-mode :after (progn
                                     (define-key coffee-mode-map "\C-xr" 'coffee-compile-buffer)
                                     (custom-set-variables  '(coffee-tab-width 2))))
-        (:name haml-mode)
+        (:name haml-mode :after (progn
+                                  (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))))
         (:name starter-kit :type :elpa)
         (:name starter-kit-bindings :type :elpa)
         (:name starter-kit-eshell :type :elpa)
