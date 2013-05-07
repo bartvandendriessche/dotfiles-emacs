@@ -19,8 +19,11 @@
                                                      (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode)) ;; support Guardfiles
                                                      (add-to-list 'auto-mode-alist '("Podfile$" . ruby-mode)) ;; support Podfiles
                                                      (add-to-list 'auto-mode-alist '("\\.podspec$" . ruby-mode)) ;; support Podspecs
+                                                     (require 'auto-complete)
+                                                     (add-hook 'ruby-mode-hook 'auto-complete-mode)
                                                      (defalias 'inf-ruby-keys 'inf-ruby-setup-keybindings)))
         (:name starter-kit-lisp :type :elpa)
+        (:name eproject)
         (:name feature-mode)
         (:name rvm :after (progn
                             (add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
