@@ -43,6 +43,10 @@
         (:name scss-mode :after (custom-set-variables '(scss-compile-at-save nil)))
         (:name less-css-mode :type :elpa)
         (:name markdown-mode)
+        (:name jedi :after (progn
+                             (add-hook 'python-mode-hook 'jedi:setup)
+                             (setq jedi:complete-on-dot t)))
+        (:name virtualenv :after (require 'virtualenv))
         (:name yasnippet-bundle :type :elpa)
         (:name yas-jit)
         (:name yaml-mode)
