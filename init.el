@@ -93,15 +93,6 @@
 ;; make S-up work in iTerm2 (likely a bug with xterm-256 mode
 (define-key global-map [select] 'windmove-up)
 
-;; (custom-set-variables
-;;  ;; custom-set-variables was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(custom-safe-themes (quote ("7fe1e3de3e04afc43f9a3d3a8d38cd0a0efd9d4c" "d14db41612953d22506af16ef7a23c4d112150e5" default)))
-;;  '(reb-re-syntax (quote string))
-;;  '(safe-local-variable-values (quote ((encoding . utf-8) (whitespace-line-column . 80) (lexical-binding . t))))
-;;  '(scss-compile-at-save nil))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -109,10 +100,23 @@
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
  '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
- '(scss-compile-at-save nil))
+ '(scss-compile-at-save nil)
+ '(gud-pdb-command-name "~/.emacs.d/pdb"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; (defun pdb-django-test ()
+;;   (interactive
+;;    (pdb (concat gud-pdb-command-name " " virtualenv-default-directory "/manage.py test " default-directory))))
+
+;; (defadvice pdb (before gud-query-cmdline activate)
+;;   "Fix command line with some Django knowledge"
+;;   (interactive
+;;    (list (gud-query-cmdline 'pdb (concat (or virtualenv-default-directory
+;;                                              default-directory)
+;;                                          "manage.py test")))))
+  
