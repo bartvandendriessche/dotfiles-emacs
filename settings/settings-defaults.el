@@ -32,6 +32,8 @@
   (define-key global-map [select] 'windmove-up) ;; make S-up work in iTerm2 (likely a bug with xterm-256 mode
 
   (setq gud-pdb-command-name "~/.emacs.d/pdb") ;; point to python debugger script
+
+  (defalias 'yes-or-no-p 'y-or-n-p) ;; allow y or n as valid inputs to yes or no questions
   )
 
 (provide 'settings-defaults)
