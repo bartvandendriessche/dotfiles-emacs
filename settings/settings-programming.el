@@ -1,3 +1,11 @@
+(progn
+  (setq el-get-sources (append el-get-sources
+			       '((:name auto-complete)
+				 (:name auto-complete-yasnippet)
+				 (:name flymake)
+				 (:name flymake-cursor)
+				 (:name markdown-mode)))))
+
 (defun settings-pretty-lambdas ()
   "Replace occurrences of lambda with the greek lambda"
   (font-lock-add-keywords nil `(("(?\\(lambda\\>\\)"
@@ -20,6 +28,24 @@
   (make-local-variable 'column-number-mode)
   (column-number-mode t))
 
+(defun settings-cleanup-buffer-safe ()
+  "Perform a bunch of safe operations on the whitespace content of a buffer.
+Does not indent buffer, because it is used for a before-save-hook, and that might be bad"
+  (interactive)
+  (untabify (point-min) (point-max))
+  (delete-trailing-whitespace)
+  (set-buffer-file-coding-system 'utf-8))
+
+(add-hook 'before-save-hook 'settings-cleanup-buffer-safe)
+
+(defun settings-cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a buffer.
+Includes indent-buffer, which should not be called automatically on save"
+  (interactive)
+  (settings-cleanup-buffer-safe)
+  (indent-region (point-min) (point-max)))
+
+(global-set-key (kbd "C-c n") 'cleanup-buffer)
 
 (add-hook 'prog-mode-hook 'settings-pretty-lambdas)
 (add-hook 'prog-mode-hook 'settings-local-comment-auto-fill)

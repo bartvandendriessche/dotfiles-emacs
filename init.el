@@ -1,15 +1,3 @@
-;; List of packages to install using el-get
-(setq el-get-sources
-      '((:name auto-complete)
-        (:name auto-complete-emacs-lisp)
-        (:name auto-complete-yasnippet)
-        (:name color-theme-solarized :after (load-theme 'solarized-dark t))
-        (:name flymake)
-        (:name flymake-cursor)
-        (:name magit :after (progn
-			      (global-set-key (kbd "C-c g") 'magit-status)))
-        (:name markdown-mode)))
-
 (add-to-list 'load-path "~/.emacs.d/settings")
 
 (require 'settings) ;; load default settings

@@ -34,6 +34,9 @@
   (setq gud-pdb-command-name "~/.emacs.d/pdb") ;; point to python debugger script
 
   (defalias 'yes-or-no-p 'y-or-n-p) ;; allow y or n as valid inputs to yes or no questions
-  )
+  (setq el-get-sources '((:name color-theme-solarized :after (load-theme 'solarized-dark t))
+			 (:name magit :after (progn
+					       (global-set-key (kbd "C-c g") 'magit-status)))
+			 (:name markdown-mode))))
 
 (provide 'settings-defaults)
