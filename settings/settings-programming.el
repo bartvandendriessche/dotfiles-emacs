@@ -1,17 +1,17 @@
 (progn
   (setq el-get-sources (append el-get-sources
-			       '((:name auto-complete)
-				 (:name auto-complete-yasnippet)
-				 (:name flymake)
-				 (:name flymake-cursor)
-				 (:name markdown-mode)))))
+                               '((:name auto-complete)
+                                 (:name auto-complete-yasnippet)
+                                 (:name flymake)
+                                 (:name flymake-cursor)
+                                 (:name markdown-mode)))))
 
 (defun settings-pretty-lambdas ()
   "Replace occurrences of lambda with the greek lambda"
   (font-lock-add-keywords nil `(("(?\\(lambda\\>\\)"
-				 (0 (progn (compose-region (match-beginning 1) (match-end 1)
-							   ,(make-char 'greek-iso8859-7 107))
-					   nil))))))
+                                 (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                                           ,(make-char 'greek-iso8859-7 107))
+                                           nil))))))
 
 (defun settings-local-comment-auto-fill ()
   "Turn on auto-fill for comment blocks"
@@ -45,7 +45,7 @@ Includes indent-buffer, which should not be called automatically on save"
   (settings-cleanup-buffer-safe)
   (indent-region (point-min) (point-max)))
 
-(global-set-key (kbd "C-c n") 'cleanup-buffer)
+(global-set-key (kbd "C-c n") 'settings-cleanup-buffer)
 
 (add-hook 'prog-mode-hook 'settings-pretty-lambdas)
 (add-hook 'prog-mode-hook 'settings-local-comment-auto-fill)
