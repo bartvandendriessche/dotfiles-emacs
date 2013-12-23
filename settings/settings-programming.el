@@ -4,7 +4,12 @@
                                  (:name auto-complete-yasnippet)
                                  (:name flymake)
                                  (:name flymake-cursor)
-                                 (:name markdown-mode)))))
+                                 (:name markdown-mode)
+                                 (:name git-gutter :after (progn
+                                                            (set-face-foreground 'git-gutter:modified "purple")
+                                                            (set-face-foreground 'git-gutter:added "green")
+                                                            (set-face-foreground 'git-gutter:deleted "red")
+                                                            (global-git-gutter-mode +1)))))))
 
 (defun settings-pretty-lambdas ()
   "Replace occurrences of lambda with the greek lambda"
