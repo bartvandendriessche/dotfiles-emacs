@@ -9,7 +9,9 @@
                                                             (set-face-foreground 'git-gutter:modified "purple")
                                                             (set-face-foreground 'git-gutter:added "green")
                                                             (set-face-foreground 'git-gutter:deleted "red")
-                                                            (global-git-gutter-mode +1)))))))
+                                                            (global-git-gutter-mode +1))))))
+  (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
+  (add-to-list 'auto-mode-alist '("\\.zsh-theme$" . shell-script-mode)))
 
 (defun settings-pretty-lambdas ()
   "Replace occurrences of lambda with the greek lambda"
