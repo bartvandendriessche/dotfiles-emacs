@@ -1,4 +1,5 @@
 (progn
+  (setq el-get-sources '()) ;; make sure el-get-sources is defined
   (require 'settings-defaults) ;; set up some defaults
   (require 'settings-bindings) ;; default keybindings
   (require 'settings-programming) ;; base configuration for 'prog-mode
