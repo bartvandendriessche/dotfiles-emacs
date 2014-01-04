@@ -6,10 +6,10 @@
                                  (:name flymake-cursor)
                                  (:name markdown-mode)
                                  (:name git-gutter :after (progn
+                                                            (global-git-gutter-mode +1)
                                                             (set-face-foreground 'git-gutter:modified "purple")
                                                             (set-face-foreground 'git-gutter:added "green")
-                                                            (set-face-foreground 'git-gutter:deleted "red")
-                                                            (global-git-gutter-mode +1))))))
+                                                            (set-face-foreground 'git-gutter:deleted "red"))))))
   (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
   (add-to-list 'auto-mode-alist '("\\.zsh-theme$" . shell-script-mode)))
 
