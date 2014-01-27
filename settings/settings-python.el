@@ -10,7 +10,9 @@
                                                            (require 'pony-mode)))
                                  (:name virtualenv :after (progn
                                                             (put 'virtualenv-workon 'safe-local-variable 'stringp)
-                                                            (put 'virtualenv-default-directory 'safe-local-variable 'stringp))))))
+                                                            (put 'virtualenv-default-directory 'safe-local-variable 'stringp)))
+                                 (:name virtualenvwrapper :type :elpa :after (progn
+                                                                               (put 'project-venv-name 'safe-local-variable 'stringp))))))
 
   (defun settings-pony-ac-setup ()
     "Make sure ac-source-yasnippet is added to `ac-sources`"
@@ -20,6 +22,10 @@
       (auto-complete-mode)))
 
   ;; (add-hook 'pony-mode-hook 'settings-pony-ac-setup)
+
+  (add-hook 'python-mode-hook (lambda ()
+                                (hack-local-variables)
+                                (venv-workon project-venv-name)))
 
   (setq gud-pdb-command-name "python -m pdb"))
 
