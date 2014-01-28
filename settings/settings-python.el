@@ -24,8 +24,9 @@
   ;; (add-hook 'pony-mode-hook 'settings-pony-ac-setup)
 
   (add-hook 'python-mode-hook (lambda ()
-                                (hack-local-variables)
-                                (venv-workon project-venv-name)))
+                                (if project-venv-name
+                                    (hack-local-variables)
+                                  (venv-workon project-venv-name))))
 
   (setq gud-pdb-command-name "python -m pdb"))
 
