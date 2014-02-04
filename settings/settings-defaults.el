@@ -32,6 +32,9 @@
   (define-key global-map [select] 'windmove-up) ;; make S-up work in iTerm2 (likely a bug with xterm-256 mode
 
   (defalias 'yes-or-no-p 'y-or-n-p) ;; allow y or n as valid inputs to yes or no questions
+
+  (setq reb-re-syntax 'string) ;; escape backslash hell in re-builder
+
   (setq el-get-sources '((:name color-theme-solarized :after (load-theme 'solarized-dark t))
                          (:name magit :after (progn
                                                (global-set-key (kbd "C-c g") 'magit-status)))
