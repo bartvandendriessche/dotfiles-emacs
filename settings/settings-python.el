@@ -25,8 +25,8 @@
 
   (add-hook 'python-mode-hook (lambda ()
                                 (if project-venv-name
-                                    (hack-local-variables)
-                                  (venv-workon project-venv-name))))
+                                    ((hack-local-variables)
+                                     (venv-workon project-venv-name)))))
 
   (setq gud-pdb-command-name "python -m pdb"))
 
