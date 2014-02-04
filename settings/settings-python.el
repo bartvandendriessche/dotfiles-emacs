@@ -5,9 +5,6 @@
                                                       (setq jedi:install-imenu)
                                                       (setq jedi:use-shortcuts t)
                                                       (setq jedi:complete-on-dot t)))
-                                 (:name pony-mode :after (progn
-                                                           (put 'pony-settings 'safe-local-variable (lambda (variable) t))
-                                                           (require 'pony-mode)))
                                  (:name virtualenv :after (progn
                                                             (put 'virtualenv-workon 'safe-local-variable 'stringp)
                                                             (put 'virtualenv-default-directory 'safe-local-variable 'stringp)))
@@ -20,8 +17,6 @@
     (add-to-list 'ac-sources 'ac-source-yasnippet)
     (unless auto-complete-mode
       (auto-complete-mode)))
-
-  ;; (add-hook 'pony-mode-hook 'settings-pony-ac-setup)
 
   (add-hook 'python-mode-hook (lambda ()
                                 (if project-venv-name
