@@ -1,7 +1,6 @@
 (progn
   (setq el-get-sources (append el-get-sources
                                '((:name auto-complete)
-                                 (:name auto-complete-yasnippet)
                                  (:name flymake)
                                  (:name flymake-cursor)
                                  (:name markdown-mode)
@@ -13,6 +12,10 @@
                                  (:name web-mode :type :elpa :after (progn
                                                                       (setq web-mode-markup-indent-offset 4)
                                                                       (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))))))
+  ;; ugh, screw yasnippet on windows
+  (if (not (eq system-type 'windows-nt))
+      (setq el-get-sources (append el-get-sources
+                                   '((:name auto-complete-yasnippet)))))
   (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
   (add-to-list 'auto-mode-alist '("\\.zsh-theme$" . shell-script-mode)))
 

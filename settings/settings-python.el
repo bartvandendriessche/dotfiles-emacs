@@ -1,15 +1,18 @@
 (progn
   (setq el-get-sources (append el-get-sources
-                               '((:name jedi :after (progn
-                                                      (add-hook 'python-mode-hook 'jedi:setup)
-                                                      (setq jedi:install-imenu)
-                                                      (setq jedi:use-shortcuts t)
-                                                      (setq jedi:complete-on-dot t)))
-                                 (:name virtualenv :after (progn
+                               '((:name virtualenv :after (progn
                                                             (put 'virtualenv-workon 'safe-local-variable 'stringp)
                                                             (put 'virtualenv-default-directory 'safe-local-variable 'stringp)))
                                  (:name virtualenvwrapper :type :elpa :after (progn
                                                                                (put 'project-venv-name 'safe-local-variable 'stringp))))))
+
+  (if (not (eq system-type 'windows-nt))
+      (setq el-get-sources (append el-get-sources
+                                   '((:name jedi :after (progn
+                                                          (add-hook 'python-mode-hook 'jedi:setup)
+                                                          (setq jedi:install-imenu)
+                                                          (setq jedi:use-shortcuts t)
+                                                          (setq jedi:complete-on-dot t)))))))
 
   (defun settings-pony-ac-setup ()
     "Make sure ac-source-yasnippet is added to `ac-sources`"
