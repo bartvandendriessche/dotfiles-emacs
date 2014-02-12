@@ -1,6 +1,7 @@
 (progn
   (setq el-get-sources (append el-get-sources
                                '((:name auto-complete)
+                                 (:name flycheck :type :elpa)
                                  (:name markdown-mode)
                                  (:name git-gutter :after (progn
                                                             (global-git-gutter-mode +1)
