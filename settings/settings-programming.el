@@ -1,8 +1,6 @@
 (progn
   (setq el-get-sources (append el-get-sources
                                '((:name auto-complete)
-                                 (:name flymake)
-                                 (:name flymake-cursor)
                                  (:name markdown-mode)
                                  (:name git-gutter :after (progn
                                                             (global-git-gutter-mode +1)
