@@ -26,6 +26,9 @@
                                     ((hack-local-variables)
                                      (venv-workon project-venv-name)))))
 
+  ;; be sure to `pip install flake8` for python flychecking
+  (add-hook 'python-mode-hook 'flycheck-mode)
+
   (setq gud-pdb-command-name "python -m pdb"))
 
 (provide 'settings-python)
