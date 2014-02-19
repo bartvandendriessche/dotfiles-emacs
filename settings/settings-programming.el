@@ -3,6 +3,7 @@
                                '((:name auto-complete)
                                  (:name flycheck :type :elpa)
                                  (:name markdown-mode)
+                                 (:name projectile)
                                  (:name git-gutter :after (progn
                                                             (global-git-gutter-mode +1)
                                                             (set-face-foreground 'git-gutter:modified "purple")

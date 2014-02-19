@@ -26,6 +26,9 @@
                                     ((hack-local-variables)
                                      (venv-workon project-venv-name)))))
 
+  (when (require 'projectile nil 'noerror)
+    (add-hook 'python-mode-hook 'projectile-mode))
+
   ;; be sure to `pip install flake8` for python flychecking
   (add-hook 'python-mode-hook 'flycheck-mode)
 
