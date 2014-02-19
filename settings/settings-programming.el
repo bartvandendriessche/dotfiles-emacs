@@ -4,14 +4,16 @@
                                  (:name flycheck :type :elpa)
                                  (:name markdown-mode)
                                  (:name projectile)
-                                 (:name git-gutter :after (progn
-                                                            (global-git-gutter-mode +1)
-                                                            (set-face-foreground 'git-gutter:modified "purple")
-                                                            (set-face-foreground 'git-gutter:added "green")
-                                                            (set-face-foreground 'git-gutter:deleted "red")))
-                                 (:name web-mode :type :elpa :after (progn
-                                                                      (setq web-mode-markup-indent-offset 4)
-                                                                      (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))))))
+                                 (:name git-gutter
+                                        :after (progn
+                                                 (global-git-gutter-mode +1)
+                                                 (set-face-foreground 'git-gutter:modified "purple")
+                                                 (set-face-foreground 'git-gutter:added "green")
+                                                 (set-face-foreground 'git-gutter:deleted "red")))
+                                 (:name web-mode :type :elpa
+                                        :after (progn
+                                                 (setq web-mode-markup-indent-offset 4)
+                                                 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))))))
   ;; ugh, screw yasnippet on windows
   (if (not (eq system-type 'windows-nt))
       (setq el-get-sources (append el-get-sources
