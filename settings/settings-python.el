@@ -14,13 +14,6 @@
                                                           (setq jedi:use-shortcuts t)
                                                           (setq jedi:complete-on-dot t)))))))
 
-  (defun settings-pony-ac-setup ()
-    "Make sure ac-source-yasnippet is added to `ac-sources`"
-    (interactive)
-    (add-to-list 'ac-sources 'ac-source-yasnippet)
-    (unless auto-complete-mode
-      (auto-complete-mode)))
-
   (add-hook 'python-mode-hook (lambda ()
                                 (if project-venv-name
                                     ((hack-local-variables)
