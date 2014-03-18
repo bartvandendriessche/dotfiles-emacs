@@ -8,6 +8,7 @@
                                         :after (progn
                                                  (put 'project-venv-name 'safe-local-variable 'stringp))))))
 
+  ;; don't bother getting jedi running on windows
   (if (not (eq system-type 'windows-nt))
       (setq el-get-sources (append el-get-sources
                                    '((:name jedi
@@ -16,18 +17,26 @@
                                                      (setq jedi:install-imenu)
                                                      (setq jedi:use-shortcuts t)
                                                      (setq jedi:complete-on-dot t)))))))
+  ;; load virtual environment if possible
+  (add-hook 'python-mode-hook '(lambda ()
+                                 (if project-venv-name
+                                     ((hack-local-variables)
+                                      (venv-workon project-venv-name)))))
 
-  (add-hook 'python-mode-hook (lambda ()
-                                (if project-venv-name
-                                    ((hack-local-variables)
-                                     (venv-workon project-venv-name)))))
-
-  (when (require 'projectile nil 'noerror)
-    (add-hook 'python-mode-hook 'projectile-mode))
+  ;; use projectile-mode in python projects
+  (add-hook 'python-mode-hook 'projectile-on)
 
   ;; be sure to `pip install flake8` for python flychecking
   (add-hook 'python-mode-hook 'flycheck-mode)
 
+  (defun ac-python-mode-setup ()
+    (require 'auto-complete-config)
+    (yas-global-mode 1)
+    (add-to-list 'ac-sources 'ac-source-yasnippet))
+
+  (add-hook 'python-mode-hook 'ac-python-mode-setup)
+
+  ;; python debugger command
   (setq gud-pdb-command-name "python -m pdb"))
 
 (provide 'settings-python)
