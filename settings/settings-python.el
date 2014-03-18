@@ -52,7 +52,7 @@
 ;; be sure to `pip install flake8` for python flychecking
 (add-hook 'python-mode-hook 'flycheck-mode)
 ;; setup python yasnippet autocomplete
-(add-hook 'python-mode-hook 'settings-ac-python-mode-setup)
+;;(add-hook 'python-mode-hook 'settings-ac-python-mode-setup)
 ;; try to guess the correct virtualenv
 (add-hook 'python-mode-hook 'settings-guess-venv-and-activate)
 
