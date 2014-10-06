@@ -5,6 +5,7 @@
                                         :after (progn
                                                  (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode))))))
 
-  (add-hook 'emacs-lisp-mode-hook 'projectile-on))
+  (add-hook 'emacs-lisp-mode-hook 'projectile-mode)
+  )
 
 (provide 'settings-lisp)
