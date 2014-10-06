@@ -1,6 +1,6 @@
 (progn
   (setq el-get-sources (append el-get-sources
-                               '((:name virtualenv
+                               '((:name virtualenv :type :elpa
                                         :after (progn
                                                  (put 'virtualenv-workon 'safe-local-variable 'stringp)
                                                  (put 'virtualenv-default-directory 'safe-local-variable 'stringp)))
