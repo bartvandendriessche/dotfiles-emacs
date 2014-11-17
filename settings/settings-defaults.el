@@ -35,6 +35,9 @@
 
   (setq reb-re-syntax 'string) ;; escape backslash hell in re-builder
 
+  (setq bookmark-default-file "~/.emacs.d/bookmarks"
+        bookmark-save-flag 1)
+
   (setq el-get-sources '((:name color-theme-solarized :after (load-theme 'solarized-dark t))
                          (:name magit :type :elpa
                                 :after (progn
