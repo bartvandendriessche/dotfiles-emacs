@@ -14,7 +14,8 @@
                                  (:name web-mode :type :elpa
                                         :after (progn
                                                  (setq web-mode-markup-indent-offset 4)
-                                                 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))))))
+                                                 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))))
+                                 (:name json-mode :type :elpa))))
 
   (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
   (add-to-list 'auto-mode-alist '("\\.zsh-theme$" . shell-script-mode)))
