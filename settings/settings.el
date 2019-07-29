@@ -7,6 +7,8 @@
   (require 'settings-python) ;; python specific packages and configuration
   (require 'settings-ruby) ;; ruby specific packages and configuration
   (require 'settings-lisp) ;; lisp schwag
+  (require 'settings-docker) ;; docker plugins
+  (require 'settings-graphviz) ;; graphviz
   (require 'settings-el-get) ;; make sure el-get is available
   )
 
