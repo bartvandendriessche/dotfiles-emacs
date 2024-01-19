@@ -86,10 +86,12 @@
   (require 'use-package))
 
 (use-package fontify-face :ensure t)
+
+;; NOTE: macOS + iTerm2 + Emacs + solarized requires https://github.com/bbatsov/solarized-emacs/issues/18#issuecomment-583549600
 (use-package solarized-theme 
   :ensure t
-  :init
-  (load-theme 'solarized-dark))
+  :config
+  (load-theme 'solarized-dark t))
 
 (use-package magit :ensure t)
 
